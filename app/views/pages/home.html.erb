@@ -1,50 +1,145 @@
-<div class="max-w-7xl mx-auto px-4 py-24">
+<!-- Main Wrapper with subtle background matching the design -->
+<div class="relative bg-slate-50/50 overflow-hidden font-sans">
+  
+  <!-- Subtle background decorative elements -->
+  <div class="absolute inset-0 z-0 pointer-events-none">
+    <div class="absolute top-[40%] left-0 right-0 h-96 bg-emerald-50/40 transform -skew-y-2"></div>
+  </div>
 
-  <div class="text-center space-y-6">
+  <div class="relative z-10 max-w-7xl mx-auto px-4 py-16 md:py-24">
+    
+    <!-- HERO SECTION -->
+    <div class="text-center space-y-6 flex flex-col items-center">
+      
+      <!-- Trust Badge -->
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-700 text-sm font-medium mb-4">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+        Trusted by 10,000+ customers
+      </div>
 
-    <h1 class="text-5xl font-bold tracking-tight">
-      Find trusted
-      <span class="text-emerald-600">local services</span>
-    </h1>
+      <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight text-slate-900">
+        Find trusted
+        <span class="text-emerald-600">local services</span>
+      </h1>
 
-    <p class="text-lg text-slate-600 max-w-2xl mx-auto">
-      Book cleaners, tutors, repair professionals, and more — all in one marketplace.
-    </p>
+      <p class="text-lg md:text-xl text-slate-500 max-w-2xl mx-auto">
+        Book cleaners, tutors, repair professionals, and more —<br class="hidden md:block" /> all in one marketplace.
+      </p>
 
-    <div class="flex justify-center gap-4 pt-4">
+      <!-- Buttons -->
+      <div class="flex flex-col sm:flex-row justify-center gap-4 pt-6">
+        
+        <%= link_to services_path, class: "inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-emerald-600 text-white font-medium rounded-full hover:bg-emerald-700 transition-colors shadow-sm shadow-emerald-200" do %>
+          Browse Services
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        <% end %>
 
-      <%= link_to "Browse Services",
-          services_path,
-          class: "px-6 py-3 bg-emerald-600 text-white rounded-xl hover:bg-emerald-700" %>
+        <% if defined?(user_signed_in?) && !user_signed_in? %>
+          <%= link_to new_user_registration_path, class: "inline-flex items-center justify-center px-8 py-3.5 border border-slate-200 bg-white text-slate-700 font-medium rounded-full hover:bg-slate-50 transition-colors shadow-sm" do %>
+            Get Started
+          <% end %>
+        <% end %>
 
-      <% if defined?(user_signed_in?) && !user_signed_in? %>
-        <%= link_to "Get Started",
-            new_user_registration_path,
-            class: "px-6 py-3 border border-slate-300 rounded-xl hover:bg-slate-100" %>
-      <% end %>
+      </div>
+    </div>
 
+    <!-- FEATURE GRID -->
+    <div class="mt-20 grid lg:grid-cols-3 gap-6 md:gap-8 relative z-10">
+      
+      <!-- Card 1: Verified Providers -->
+      <div class="p-6 md:p-8 bg-white rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 flex flex-col h-full transition-transform hover:-translate-y-1">
+        <div class="flex items-start gap-5">
+          <div class="w-14 h-14 shrink-0 rounded-2xl bg-emerald-50 flex items-center justify-center">
+            <svg class="w-7 h-7 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold text-slate-900">Verified Providers</h3>
+            <p class="text-slate-500 text-sm mt-1.5 leading-relaxed">All professionals are vetted and reviewed.</p>
+          </div>
+        </div>
+        <div class="mt-auto pt-6">
+          <hr class="border-slate-100 mb-4" />
+          <div class="flex flex-wrap items-center justify-between gap-2 text-xs font-medium text-slate-500">
+            <span class="flex items-center gap-1.5">
+              <svg class="w-3.5 h-3.5 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Background checked
+            </span>
+            <span class="flex items-center gap-1.5">
+              <svg class="w-3.5 h-3.5 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Top-rated pros
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Fast Booking -->
+      <div class="p-6 md:p-8 bg-white rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 flex flex-col h-full transition-transform hover:-translate-y-1">
+        <div class="flex items-start gap-5">
+          <div class="w-14 h-14 shrink-0 rounded-2xl bg-blue-50 flex items-center justify-center">
+            <svg class="w-7 h-7 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold text-slate-900">Fast Booking</h3>
+            <p class="text-slate-500 text-sm mt-1.5 leading-relaxed">Book services in minutes, not days.</p>
+          </div>
+        </div>
+        <div class="mt-auto pt-6">
+          <hr class="border-slate-100 mb-4" />
+          <div class="flex flex-wrap items-center justify-between gap-2 text-xs font-medium text-slate-500">
+            <span class="flex items-center gap-1.5">
+              <svg class="w-3.5 h-3.5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Instant confirmation
+            </span>
+            <span class="flex items-center gap-1.5">
+              <svg class="w-3.5 h-3.5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Real-time availability
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: Secure Payments -->
+      <div class="p-6 md:p-8 bg-white rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 flex flex-col h-full transition-transform hover:-translate-y-1">
+        <div class="flex items-start gap-5">
+          <div class="w-14 h-14 shrink-0 rounded-2xl bg-purple-50 flex items-center justify-center">
+            <svg class="w-7 h-7 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold text-slate-900">Secure Payments</h3>
+            <p class="text-slate-500 text-sm mt-1.5 leading-relaxed">Stripe-powered secure transactions.</p>
+          </div>
+        </div>
+        <div class="mt-auto pt-6">
+          <hr class="border-slate-100 mb-4" />
+          <div class="flex flex-wrap items-center justify-between gap-2 text-xs font-medium text-slate-500">
+            <span class="flex items-center gap-1.5">
+              <svg class="w-3.5 h-3.5 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Encrypted & secure
+            </span>
+            <span class="flex items-center gap-1.5">
+              <svg class="w-3.5 h-3.5 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Protected payments
+            </span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- REVIEWS / SOCIAL PROOF SECTION -->
+    <div class="mt-20 flex flex-col sm:flex-row items-center justify-center gap-4 relative z-10">
+      <!-- Avatars -->
+      <div class="flex -space-x-3">
+        <img class="w-10 h-10 rounded-full border-2 border-white object-cover" src="https://ui-avatars.com/api/?name=Alice&background=random" alt="User 1">
+        <img class="w-10 h-10 rounded-full border-2 border-white object-cover" src="https://ui-avatars.com/api/?name=Bob&background=random" alt="User 2">
+        <img class="w-10 h-10 rounded-full border-2 border-white object-cover" src="https://ui-avatars.com/api/?name=Claire&background=random" alt="User 3">
+        <img class="w-10 h-10 rounded-full border-2 border-white object-cover" src="https://ui-avatars.com/api/?name=David&background=random" alt="User 4">
+      </div>
+      
+      <!-- Stars & Text -->
+      <div class="flex items-center gap-3">
+        <div class="flex text-yellow-400">
+          <% 5.times do %>
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+          <% end %>
+        </div>
+        <p class="text-sm font-medium text-slate-600">4.9/5 from 2,500+ reviews</p>
+      </div>
     </div>
 
   </div>
-
-  <!-- FEATURE GRID -->
-  <div class="mt-24 grid md:grid-cols-3 gap-6">
-
-    <div class="p-6 bg-white rounded-xl border">
-      <h3 class="font-semibold">Verified Providers</h3>
-      <p class="text-slate-600 text-sm mt-2">All professionals are vetted and reviewed.</p>
-    </div>
-
-    <div class="p-6 bg-white rounded-xl border">
-      <h3 class="font-semibold">Fast Booking</h3>
-      <p class="text-slate-600 text-sm mt-2">Book services in minutes, not days.</p>
-    </div>
-
-    <div class="p-6 bg-white rounded-xl border">
-      <h3 class="font-semibold">Secure Payments</h3>
-      <p class="text-slate-600 text-sm mt-2">Stripe-powered secure transactions.</p>
-    </div>
-
-  </div>
-
 </div>

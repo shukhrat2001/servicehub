@@ -4,7 +4,6 @@ ruby "3.3.5"
 
 # Rails
 gem "rails", "~> 8.0.5"
-gem "pg", "~> 1.5"
 gem "puma", ">= 6.4"
 
 # Frontend
@@ -65,6 +64,11 @@ group :development do
   gem "rubocop-rails", "~> 2.21"
   ###gem "bullet", "~> 7.0"
 end
+
+group :production do
+  gem "pg", "~> 1.5"
+end
+
 
 group :test do
   gem "webmock", "~> 3.18"
