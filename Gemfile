@@ -44,6 +44,9 @@ gem "aws-sdk-s3", "~> 1.130"
 gem "active_storage_validations", "~> 0.9"
 gem "image_processing", "~> 1.2"
 
+#Rendering
+gem "solid_queue"
+
 # Environment
 gem "dotenv-rails", "~> 2.8"
 
