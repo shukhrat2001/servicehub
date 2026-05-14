@@ -7,7 +7,7 @@ gem "rails", "~> 8.0.5"
 gem "puma", ">= 6.4"
 
 # Frontend
-gem "tailwindcss-rails", "~> 3.0"
+gem "tailwindcss-rails", "~> 4.4"
 gem "importmap-rails", "~> 2.0"
 gem "stimulus-rails", "~> 1.3"
 gem "turbo-rails", "~> 2.0"
