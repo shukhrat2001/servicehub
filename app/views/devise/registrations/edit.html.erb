@@ -1,0 +1,107 @@
+<div class="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 py-12 px-4">
+
+  <div class="max-w-2xl mx-auto">
+
+    <!-- Header -->
+    <div class="mb-10 text-center">
+      <h1 class="text-4xl font-bold text-slate-900">Account Settings</h1>
+      <p class="text-slate-600 mt-2">Update your profile and security settings</p>
+    </div>
+
+    <!-- Card -->
+    <div class="bg-white border border-slate-200 rounded-2xl shadow-lg p-8">
+
+      <%= form_for(resource,
+            as: resource_name,
+            url: registration_path(resource_name),
+            html: { method: :put, class: "space-y-6" }) do |f| %>
+
+        <%= render "devise/shared/error_messages", resource: resource %>
+
+        <!-- Email -->
+        <div>
+          <%= f.label :email, class: "block text-sm font-medium text-slate-700 mb-1" %>
+          <%= f.email_field :email,
+                autofocus: true,
+                autocomplete: "email",
+                class: "w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none" %>
+        </div>
+
+        <!-- Pending confirmation -->
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div class="p-3 bg-yellow-50 border border-yellow-200 text-yellow-700 rounded-xl text-sm">
+            Pending confirmation for:
+            <strong><%= resource.unconfirmed_email %></strong>
+          </div>
+        <% end %>
+
+        <!-- Password -->
+        <div>
+          <%= f.label :password, class: "block text-sm font-medium text-slate-700 mb-1" %>
+          <p class="text-xs text-slate-500 mb-2">
+            Leave blank if you don't want to change it
+          </p>
+
+          <%= f.password_field :password,
+                autocomplete: "new-password",
+                class: "w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none" %>
+
+          <% if @minimum_password_length %>
+            <p class="text-xs text-slate-400 mt-1">
+              <%= @minimum_password_length %> characters minimum
+            </p>
+          <% end %>
+        </div>
+
+        <!-- Password confirmation -->
+        <div>
+          <%= f.label :password_confirmation, class: "block text-sm font-medium text-slate-700 mb-1" %>
+          <%= f.password_field :password_confirmation,
+                autocomplete: "new-password",
+                class: "w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none" %>
+        </div>
+
+        <!-- Current password -->
+        <div>
+          <%= f.label :current_password, class: "block text-sm font-medium text-slate-700 mb-1" %>
+          <p class="text-xs text-slate-500 mb-2">
+            Required to confirm changes
+          </p>
+
+          <%= f.password_field :current_password,
+                autocomplete: "current-password",
+                class: "w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none" %>
+        </div>
+
+        <!-- Actions -->
+        <div class="pt-4">
+          <%= f.submit "Update Account",
+                class: "w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 rounded-xl transition shadow-md hover:shadow-lg" %>
+        </div>
+
+      <% end %>
+    </div>
+
+    <!-- Danger Zone -->
+    <div class="mt-10 bg-white border border-red-200 rounded-2xl p-6 shadow-sm">
+
+      <h2 class="text-lg font-bold text-red-600 mb-2">Danger Zone</h2>
+      <p class="text-sm text-slate-600 mb-4">
+        Permanently delete your account. This action cannot be undone.
+      </p>
+
+      <%= button_to "Delete Account",
+            registration_path(resource_name),
+            method: :delete,
+            data: { turbo_confirm: "Are you sure? This cannot be undone." },
+            class: "px-5 py-2 bg-red-600 text-white rounded-xl hover:bg-red-700 transition" %>
+
+    </div>
+
+    <!-- Back -->
+    <div class="text-center mt-6">
+      <%= link_to "← Back", root_path, class: "text-sm text-slate-500 hover:text-slate-900" %>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,50 @@
+<div class="max-w-7xl mx-auto px-4 py-24">
+
+  <div class="text-center space-y-6">
+
+    <h1 class="text-5xl font-bold tracking-tight">
+      Find trusted
+      <span class="text-emerald-600">local services</span>
+    </h1>
+
+    <p class="text-lg text-slate-600 max-w-2xl mx-auto">
+      Book cleaners, tutors, repair professionals, and more — all in one marketplace.
+    </p>
+
+    <div class="flex justify-center gap-4 pt-4">
+
+      <%= link_to "Browse Services",
+          services_path,
+          class: "px-6 py-3 bg-emerald-600 text-white rounded-xl hover:bg-emerald-700" %>
+
+      <% if defined?(user_signed_in?) && !user_signed_in? %>
+        <%= link_to "Get Started",
+            new_user_registration_path,
+            class: "px-6 py-3 border border-slate-300 rounded-xl hover:bg-slate-100" %>
+      <% end %>
+
+    </div>
+
+  </div>
+
+  <!-- FEATURE GRID -->
+  <div class="mt-24 grid md:grid-cols-3 gap-6">
+
+    <div class="p-6 bg-white rounded-xl border">
+      <h3 class="font-semibold">Verified Providers</h3>
+      <p class="text-slate-600 text-sm mt-2">All professionals are vetted and reviewed.</p>
+    </div>
+
+    <div class="p-6 bg-white rounded-xl border">
+      <h3 class="font-semibold">Fast Booking</h3>
+      <p class="text-slate-600 text-sm mt-2">Book services in minutes, not days.</p>
+    </div>
+
+    <div class="p-6 bg-white rounded-xl border">
+      <h3 class="font-semibold">Secure Payments</h3>
+      <p class="text-slate-600 text-sm mt-2">Stripe-powered secure transactions.</p>
+    </div>
+
+  </div>
+
+</div>

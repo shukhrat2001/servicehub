@@ -1,0 +1,91 @@
+<div class="max-w-5xl mx-auto px-4 py-12">
+
+  <!-- Back link -->
+  <%= link_to "← Back to Services",
+      services_path,
+      class: "text-sm text-slate-500 hover:text-slate-900 transition" %>
+
+  <!-- Service Header -->
+  <div class="mt-6 bg-white border border-slate-200 rounded-2xl p-8 shadow-sm">
+
+    <div class="flex justify-between items-start gap-6">
+
+      <div>
+        <h1 class="text-3xl font-bold text-slate-900">
+          <%= @service.name %>
+        </h1>
+
+        <p class="text-sm text-slate-500 mt-1">
+          Category: <%= @service.category.presence || "Uncategorized" %>
+        </p>
+      </div>
+
+      <div class="text-right shrink-0">
+        <p class="text-2xl font-bold text-emerald-600">
+          $<%= @service.base_price %>
+        </p>
+        <p class="text-sm text-slate-500">
+          <%= @service.duration_minutes %> min service
+        </p>
+      </div>
+
+    </div>
+
+    <!-- Description -->
+    <div class="mt-6">
+      <p class="text-slate-700 leading-relaxed">
+        <%= @service.description %>
+      </p>
+    </div>
+
+  </div>
+
+  <!-- Provider Card -->
+  <div class="mt-6 bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+
+    <h2 class="font-semibold text-lg mb-4 text-slate-900">
+      Provider
+    </h2>
+
+    <div class="flex items-center gap-4">
+
+      <!-- Safe avatar (FIXED) -->
+      <% if @service.user&.avatar&.attached? %>
+        <%= image_tag @service.user.avatar,
+            class: "w-12 h-12 rounded-full object-cover" %>
+      <% else %>
+        <div class="w-12 h-12 rounded-full bg-slate-200 flex items-center justify-center">
+          <span class="text-sm font-semibold text-slate-500">
+            <%= @service.user&.email&.first&.upcase || "?" %>
+          </span>
+        </div>
+      <% end %>
+
+      <div class="min-w-0">
+        <p class="font-semibold text-slate-900">
+          <%= @service.user&.full_name || @service.user&.email || "Unknown Provider" %>
+        </p>
+
+        <p class="text-sm text-slate-500 truncate">
+          <%= @service.user&.email || "No email available" %>
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- CTA -->
+  <div class="mt-6 flex flex-col sm:flex-row gap-4">
+
+    <button class="px-6 py-3 bg-emerald-600 text-white rounded-xl hover:bg-emerald-700 transition shadow-sm">
+      Book Now
+    </button>
+
+    <button class="px-6 py-3 border border-slate-300 rounded-xl hover:bg-slate-50 transition">
+      Message Provider
+    </button>
+
+  </div>
+
+</div>

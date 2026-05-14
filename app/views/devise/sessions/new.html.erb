@@ -1,0 +1,55 @@
+<div class="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100 px-4">
+
+  <div class="w-full max-w-md bg-white rounded-2xl shadow-xl border border-slate-200 p-8">
+
+    <!-- Header -->
+    <div class="text-center mb-8">
+      <h2 class="text-3xl font-bold text-slate-900">Welcome back</h2>
+      <p class="text-slate-500 mt-2">Sign in to your ServiceHub account</p>
+    </div>
+
+    <!-- Form -->
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+      <!-- Email -->
+      <div class="mb-4">
+        <%= f.label :email, class: "block text-sm font-medium text-slate-700 mb-1" %>
+        <%= f.email_field :email,
+              autofocus: true,
+              autocomplete: "email",
+              class: "w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none" %>
+      </div>
+
+      <!-- Password -->
+      <div class="mb-4">
+        <%= f.label :password, class: "block text-sm font-medium text-slate-700 mb-1" %>
+        <%= f.password_field :password,
+              autocomplete: "current-password",
+              class: "w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none" %>
+      </div>
+
+      <!-- Remember me -->
+      <% if devise_mapping.rememberable? %>
+        <div class="flex items-center mb-6">
+          <%= f.check_box :remember_me, class: "h-4 w-4 text-emerald-600 border-slate-300 rounded" %>
+          <%= f.label :remember_me, class: "ml-2 text-sm text-slate-600" %>
+        </div>
+      <% end %>
+
+      <!-- Submit -->
+      <div>
+        <%= f.submit "Sign in",
+              class: "w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 rounded-xl transition shadow-md hover:shadow-lg" %>
+      </div>
+
+    <% end %>
+
+    <!-- Links -->
+    <div class="mt-6 text-center text-sm text-slate-500 space-y-2">
+
+      <%= render "devise/shared/links" %>
+
+    </div>
+
+  </div>
+</div>
