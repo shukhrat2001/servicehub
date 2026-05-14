@@ -8,13 +8,12 @@ gem "puma", ">= 6.4"
 
 # Frontend
 gem "tailwindcss-rails", "~> 3.0"
-gem "jsbundling-rails", "~> 1.2"
 gem "importmap-rails", "~> 2.0"
-gem "sprockets-rails", "~> 3.4"
 gem "stimulus-rails", "~> 1.3"
 gem "turbo-rails", "~> 2.0"
 
 gem "bootsnap"
+gem "propshaft"
 
 # Authentication
 gem "devise", "~> 4.9"
@@ -46,6 +45,7 @@ gem "image_processing", "~> 1.2"
 
 #Rendering
 gem "solid_queue"
+gem "solid_cache"
 
 # Environment
 gem "dotenv-rails", "~> 2.8"
