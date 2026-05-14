@@ -23,7 +23,7 @@ gem "pundit", "~> 2.3"
 
 # API
 gem "active_model_serializers", "~> 0.10"
-gem "pagy", "~> 6.0"
+gem "pagy", "~> 43.5"
 
 # Payments
 gem "stripe", "~> 10.0"
