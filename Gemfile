@@ -33,7 +33,7 @@ gem "geocoder", "~> 1.8"
 
 # Background Jobs
 gem "sidekiq", "~> 7.1"
-gem "sidekiq-scheduler", "~> 5.0"
+gem "sidekiq-scheduler", "~> 6.0"
 
 # Notifications
 gem "twilio-ruby", "~> 6.0"
