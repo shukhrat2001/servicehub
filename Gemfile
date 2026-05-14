@@ -37,7 +37,7 @@ gem "sidekiq", "~> 7.1"
 gem "sidekiq-scheduler", "~> 5.0"
 
 # Notifications
-gem "twilio-ruby", "~> 6.0"
+gem "twilio-ruby", "~> 7.10"
 
 # File Storage
 gem "aws-sdk-s3", "~> 1.130"
