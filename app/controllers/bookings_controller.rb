@@ -5,11 +5,12 @@ class BookingsController < ApplicationController
   def create
     @booking = @service.bookings.build(booking_params)
     @booking.customer = current_user
-
+    
     if @booking.save
       redirect_to @service, notice: 'Booking created successfully!'
     else
-      redirect_to @service, alert: 'Error creating booking.'
+      puts "Booking errors: #{@booking.errors.full_messages.join(', ')}"
+      redirect_to @service, alert: "Error creating booking: #{@booking.errors.full_messages.join(', ')}"
     end
   end
 
