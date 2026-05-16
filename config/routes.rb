@@ -14,6 +14,20 @@ Rails.application.routes.draw do
   # =========================
   root "pages#home"
 
+
+  ## Dashboard"
+
+  namespace :dashboard do
+    get "messages/index"
+    get "messages/show"
+    get "bookings/index"
+    get "bookings/show"
+    get "home/index"
+  root 'dashboard/home#index'
+  resources :bookings, only: [:index, :show]
+  resources :messages, only: [:index, :show]
+end
+
   # =========================
   # STATIC PAGES
   # =========================
