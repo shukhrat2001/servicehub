@@ -51,8 +51,8 @@ gem "solid_cache"
 gem "dotenv-rails", "~> 2.8"
 
 # Monitoring
-gem "sentry-rails", "~> 5.10"
-gem "sentry-sidekiq", "~> 5.10"
+gem "sentry-rails", "~> 6.5"
+gem "sentry-sidekiq", "~> 6.5"
 
 # Testing
 group :development, :test do
