@@ -33,6 +33,8 @@
 # Ignore key files for decrypting credentials and more.
 /config/*.key
 
+#shows schema file in docs folder
+docs/schema.html
 
 /app/assets/builds/*
 !/app/assets/builds/.keep
