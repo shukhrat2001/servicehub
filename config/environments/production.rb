@@ -13,7 +13,7 @@ Rails.application.configure do
   config.consider_all_requests_local = false
 
   # This tells Rails to defer schema loading until actually needed.
-  config.active_record.lazy_schema_loading = true
+ # config.active_record.lazy_schema_loading = true
 
   # Turn on fragment caching in view templates.
   config.action_controller.perform_caching = true
