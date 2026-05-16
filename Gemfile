@@ -65,7 +65,7 @@ end
 group :development do
   gem "web-console", "~> 4.2"
   gem "rubocop-rails", "~> 2.21"
-  gem 'rails-schema'
+  gem "rails-schema", "~> 0.1.3", group: :development
   ###gem "bullet", "~> 7.0"
 end
 
@@ -79,4 +79,4 @@ group :test do
   gem "vcr", "~> 6.1"
 end
 
-gem "rails-schema", "~> 0.1.3", group: :development
+
