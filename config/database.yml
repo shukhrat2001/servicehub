@@ -17,8 +17,7 @@ default: &default
   encoding: unicode
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
-  max_connections: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
   <<: *default
@@ -87,15 +86,18 @@ test:
 production:
   primary:
     url: <%= ENV["DATABASE_URL"] %>
-
   cache:
     url: <%= ENV["DATABASE_URL"] %>
     migrations_paths: db/cache_migrate
-
   queue:
     url: <%= ENV["DATABASE_URL"] %>
     migrations_paths: db/queue_migrate
-
   cable:
     url: <%= ENV["DATABASE_URL"] %>
     migrations_paths: db/cable_migrate
+
+# For Docker builds (no real DB needed during asset precompilation)
+build:
+  adapter: postgresql
+  database: ':memory:'
+  host: localhost
