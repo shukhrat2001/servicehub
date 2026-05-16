@@ -16,7 +16,7 @@ gem "bootsnap"
 gem "propshaft"
 
 # Authentication
-gem "devise", "~> 4.9"
+gem "devise", "~> 5.0"
 gem "devise-jwt", "~> 0.11"
 gem "jwt", "~> 2.7"
 gem "pundit", "~> 2.3"
