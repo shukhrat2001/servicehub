@@ -26,7 +26,7 @@ gem "active_model_serializers", "~> 0.10"
 gem "pagy", "~> 6.0"
 
 # Payments
-gem "stripe", "~> 10.0"
+gem "stripe", "~> 19.1"
 
 # Geocoding
 gem "geocoder", "~> 1.8"
