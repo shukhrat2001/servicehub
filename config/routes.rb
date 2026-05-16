@@ -14,32 +14,25 @@ Rails.application.routes.draw do
   # =========================
   root "pages#home"
 
-
-  ## Dashboard"
-
+  # =========================
+  # DASHBOARD
+  # =========================
   namespace :dashboard do
-    get "messages/index"
-    get "messages/show"
-    get "bookings/index"
-    get "bookings/show"
-    get "home/index"
-  root 'dashboard/home#index'
-  resources :bookings, only: [:index, :show]
-  resources :messages, only: [:index, :show]
-end
+    root 'home#index'
+    resources :bookings, only: [:index, :show]
+    resources :messages, only: [:index, :show]
+  end
 
   # =========================
   # STATIC PAGES
   # =========================
   get "browse", to: "pages#browse"
-  get "dashboard", to: "pages#dashboard"
 
   # =========================
   # MARKETPLACE CORE
   # =========================
   resources :services do
     resources :bookings, only: [:create]
-
     resources :messages, only: [:new, :create]
 
     # optional UX shortcuts (so buttons can work easily)
