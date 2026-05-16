@@ -57,7 +57,7 @@ gem "sentry-sidekiq", "~> 5.10"
 # Testing
 group :development, :test do
   gem "debug", "~> 1.9"
-  gem "rspec-rails", "~> 6.0"
+  gem "rspec-rails", "~> 8.0"
   gem "factory_bot_rails", "~> 6.2"
   gem "faker", "~> 3.1"
 end
