@@ -1,4 +1,59 @@
-<div>
-  <h1 class="font-bold text-4xl">Dashboard::Messages#index</h1>
-  <p>Find me in app/views/dashboard/messages/index.html.erb</p>
+<div class="space-y-8">
+
+  <h1 class="text-3xl font-bold">Messages</h1>
+
+  <!-- Received Messages -->
+  <div>
+    <h2 class="text-xl font-bold mb-4">Received Messages</h2>
+    
+    <% if @received_messages.any? %>
+      <div class="space-y-3">
+        <% @received_messages.each do |message| %>
+          <div class="bg-white border border-slate-200 rounded-lg p-4 hover:shadow-md transition">
+            <div class="flex justify-between items-start">
+              <div>
+                <p class="font-semibold"><%= message.sender.full_name %></p>
+                <p class="text-sm text-slate-600">Service: <%= message.service.name %></p>
+                <p class="text-sm text-slate-600 mt-2"><%= message.content[0..100] %>...</p>
+              </div>
+              <div class="text-right">
+                <p class="text-xs text-slate-500"><%= time_ago_in_words(message.created_at) %> ago</p>
+                <%= link_to "Read", dashboard_message_path(message), class: "text-sm text-teal-600 hover:text-teal-700" %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <p class="text-slate-600">No received messages</p>
+    <% end %>
+  </div>
+
+  <!-- Sent Messages -->
+  <div class="border-t border-slate-200 pt-8">
+    <h2 class="text-xl font-bold mb-4">Sent Messages</h2>
+    
+    <% if @sent_messages.any? %>
+      <div class="space-y-3">
+        <% @sent_messages.each do |message| %>
+          <div class="bg-white border border-slate-200 rounded-lg p-4 hover:shadow-md transition">
+            <div class="flex justify-between items-start">
+              <div>
+                <p class="font-semibold"><%= message.receiver.full_name %></p>
+                <p class="text-sm text-slate-600">Service: <%= message.service.name %></p>
+                <p class="text-sm text-slate-600 mt-2"><%= message.content[0..100] %>...</p>
+              </div>
+              <div class="text-right">
+                <p class="text-xs text-slate-500"><%= time_ago_in_words(message.created_at) %> ago</p>
+                <%= link_to "Read", dashboard_message_path(message), class: "text-sm text-teal-600 hover:text-teal-700" %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <p class="text-slate-600">No sent messages</p>
+    <% end %>
+  </div>
+
 </div>
