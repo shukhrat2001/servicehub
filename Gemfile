@@ -40,7 +40,7 @@ gem "twilio-ruby", "~> 6.0"
 
 # File Storage
 gem "aws-sdk-s3", "~> 1.130"
-gem "active_storage_validations", "~> 0.9"
+gem "active_storage_validations", "~> 3.0"
 gem "image_processing", "~> 1.2"
 
 #Rendering
