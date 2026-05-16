@@ -9,11 +9,13 @@ class MessagesController < ApplicationController
   def create
     @message = @service.messages.build(message_params)
     @message.sender = current_user
+    @message.receiver = @service.user
 
     if @message.save
       redirect_to @service, notice: 'Message sent!'
     else
-      redirect_to @service, alert: 'Error sending message.'
+      puts "Message errors: #{@message.errors.full_messages.join(', ')}"
+      redirect_to @service, alert: "Error sending message: #{@message.errors.full_messages.join(', ')}"
     end
   end
 

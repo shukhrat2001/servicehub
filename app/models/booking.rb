@@ -3,9 +3,13 @@ class Booking < ApplicationRecord
   belongs_to :customer, class_name: 'User', foreign_key: 'customer_id'
 
   validates :customer_id, :service_id, presence: true
-  validates :status, inclusion: { in: %w(pending confirmed completed cancelled) }
+  validates :status, inclusion: { in: %w(pending confirmed completed cancelled) }, allow_nil: true
   
-  enum :status, { pending: 'pending', confirmed: 'confirmed', completed: 'completed', cancelled: 'cancelled' }
+  before_create :set_default_status
 
-  scope :active, -> { where(status: ['pending', 'confirmed']) }
+  private
+
+  def set_default_status
+    self.status ||= 'pending'
+  end
 end
